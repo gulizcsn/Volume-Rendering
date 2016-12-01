@@ -37,7 +37,7 @@ public class Volume {
     
     
     public short getVoxel(int x, int y, int z) {
-        return data[x + dimX*(y + dimY * z)];
+        return data[x + dimX*(y + dimY * z)];				//TODO understand why
     }
     
     public void setVoxel(int x, int y, int z, short value) {

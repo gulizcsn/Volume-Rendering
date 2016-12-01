@@ -22,7 +22,7 @@ public abstract class Renderer {
         
     }
 
-    public void setInteractiveMode(boolean flag) {
+	public void setInteractiveMode(boolean flag) {
         interactiveMode = flag;
     }
     

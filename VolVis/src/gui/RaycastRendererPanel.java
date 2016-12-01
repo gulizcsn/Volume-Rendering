@@ -47,9 +47,9 @@ public class RaycastRendererPanel extends javax.swing.JPanel {
         compositingButton = new javax.swing.JRadioButton();
         tf2dButton = new javax.swing.JRadioButton();
         shadingCheckbox = new javax.swing.JCheckBox();
+        
 
         jLabel1.setText("Rendering time (ms):");
-
         renderingSpeedLabel.setText("jLabel2");
 
         buttonGroup1.add(slicerButton);
@@ -68,7 +68,8 @@ public class RaycastRendererPanel extends javax.swing.JPanel {
                 mipButtonActionPerformed(evt);
             }
         });
-
+        
+        
         buttonGroup1.add(compositingButton);
         compositingButton.setText("Compositing");
         compositingButton.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +105,7 @@ public class RaycastRendererPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(renderingSpeedLabel))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(compositingButton)
+                    	.addComponent(compositingButton)
                         .addComponent(tf2dButton)
                         .addComponent(mipButton)
                         .addComponent(slicerButton)
@@ -133,15 +134,18 @@ public class RaycastRendererPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mipButtonActionPerformed
-        JOptionPane.showMessageDialog(this, "Not implemented.");
+    	renderer.setMode(1);
+        renderer.changed();
     }//GEN-LAST:event_mipButtonActionPerformed
 
     private void slicerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slicerButtonActionPerformed
-        
+    	renderer.setMode(0);
+        renderer.changed();
     }//GEN-LAST:event_slicerButtonActionPerformed
-
+       
     private void compositingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compositingButtonActionPerformed
-        JOptionPane.showMessageDialog(this, "Not implemented.");
+    	renderer.setMode(2);
+        renderer.changed();
     }//GEN-LAST:event_compositingButtonActionPerformed
 
     private void tf2dButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf2dButtonActionPerformed
