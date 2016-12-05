@@ -49,7 +49,7 @@ public class GradientVolume {
         return dimZ;
     }
 
-    private void compute() {
+ private void compute() {
 
         // this just initializes all gradients to the vector (0,0,0)
         for (int i=0; i<data.length; i++) {
@@ -63,7 +63,7 @@ public class GradientVolume {
        // to take get the values between voxel range we need to calculate dimensions exceed to this range or not
         int rangeforX=Math.min(getDimX(),volume.getMaximum());
         int rangeforY=Math.min(getDimY(),volume.getMaximum());
-        int rangeforZ=Math.min(getDimY(),volume.getMaximum());
+        int rangeforZ=Math.min(getDimZ(),volume.getMaximum());
         for (int j=0; j<rangeforX; j++) {
             for (int k=0; k<rangeforY; k++) {
                 for (int l=0; l<rangeforZ; l++) {
@@ -71,7 +71,7 @@ public class GradientVolume {
                 // gradient of the outer frame of pixels should be zero
                      if((j==0)||(k==0)||(l==0)||(j==(rangeforX-1))||(k==(rangeforY-1))||(l==(rangeforZ-1)))
                      {
-                      // do nothing
+                      this.setGradient(j, k, l, zero);
                      }
                      else
                      {
@@ -86,6 +86,7 @@ public class GradientVolume {
             }
         }
     }
+
     
     public double getMaxGradientMagnitude() {
         if (maxmag >= 0) {

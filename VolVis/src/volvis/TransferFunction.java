@@ -171,4 +171,23 @@ public class TransferFunction {
     private TFColor[] LUT;
     private int LUTsize = 4095;
     private ArrayList<ControlPoint> controlPoints;
+
+//	public ArrayList<TFColor> getDVRColor(int val, TFColor nextColor, TFColor prevColor) {
+//		ArrayList<TFColor> colors = new ArrayList<TFColor>(3);
+//		TFColor voxelColor = this.getColor(val);
+//		nextColor.r = voxelColor.a * voxelColor.r + (1 - voxelColor.a) * prevColor.r;
+//        nextColor.g = voxelColor.a * voxelColor.g + (1 - voxelColor.a) * prevColor.g;
+//        nextColor.b = voxelColor.a * voxelColor.b + (1 - voxelColor.a) * prevColor.b;
+//        
+//        nextColor.a = (1 - voxelColor.a) * prevColor.a;
+//        
+//        prevColor = nextColor;
+//        
+//        //Return voxelColor, nextColor and prevColor 
+//        colors.add(voxelColor);
+//        colors.add(nextColor);
+//        colors.add(prevColor);
+//        
+//        return colors;
+//	}
 }
