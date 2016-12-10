@@ -47,7 +47,7 @@ public class RaycastRendererPanel extends javax.swing.JPanel {
         compositingButton = new javax.swing.JRadioButton();
         tf2dButton = new javax.swing.JRadioButton();
         shadingCheckbox = new javax.swing.JCheckBox();
-        
+        triLinearCheckbox = new javax.swing.JCheckBox();
 
         jLabel1.setText("Rendering time (ms):");
         renderingSpeedLabel.setText("jLabel2");
@@ -92,6 +92,13 @@ public class RaycastRendererPanel extends javax.swing.JPanel {
                 shadingCheckboxActionPerformed(evt);
             }
         });
+        
+        triLinearCheckbox.setText("Tri-linear Interpolation");
+        triLinearCheckbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                triLinearCheckboxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -109,7 +116,8 @@ public class RaycastRendererPanel extends javax.swing.JPanel {
                         .addComponent(tf2dButton)
                         .addComponent(mipButton)
                         .addComponent(slicerButton)
-                        .addComponent(shadingCheckbox)))
+                        .addComponent(shadingCheckbox)
+                        .addComponent(triLinearCheckbox)))
                 .addContainerGap(339, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -129,43 +137,52 @@ public class RaycastRendererPanel extends javax.swing.JPanel {
                 .addComponent(tf2dButton)
                 .addGap(18, 18, 18)
                 .addComponent(shadingCheckbox)
+                .addComponent(triLinearCheckbox)
                 .addContainerGap(137, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void mipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mipButtonActionPerformed
     	renderer.setMode(1);
-<<<<<<< HEAD
         
-=======
-        renderer.changed();
->>>>>>> origin/master
     }//GEN-LAST:event_mipButtonActionPerformed
 
     private void slicerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slicerButtonActionPerformed
     	renderer.setMode(0);
-<<<<<<< HEAD
         
-=======
-        renderer.changed();
->>>>>>> origin/master
     }//GEN-LAST:event_slicerButtonActionPerformed
        
     private void compositingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compositingButtonActionPerformed
     	renderer.setMode(2);
-<<<<<<< HEAD
         
-=======
-        renderer.changed();
->>>>>>> origin/master
     }//GEN-LAST:event_compositingButtonActionPerformed
 
-    private void tf2dButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf2dButtonActionPerformed
+    private void tf2dButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
         renderer.setMode(3);
+    }                                          
+    
+    private void triLinearCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf2dButtonActionPerformed
+        if(triLinearCheckbox.isSelected()){
+            renderer.setTriLinear(true);
+        }
+        else{
+            renderer.setTriLinear(false);
+        }
     }//GEN-LAST:event_tf2dButtonActionPerformed
 
     private void shadingCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shadingCheckboxActionPerformed
-        JOptionPane.showMessageDialog(this, "Not implemented.");
+        if(shadingCheckbox.isSelected()){
+            if(renderer.getMode()==2)
+                renderer.setMode(4);
+            else if (renderer.getMode()==3)
+                renderer.setMode(5); 
+        }
+        else{
+            if(renderer.getMode()==4)
+                renderer.setMode(2);
+            else if (renderer.getMode()==5)
+                renderer.setMode(3); 
+        }
     }//GEN-LAST:event_shadingCheckboxActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -175,6 +192,7 @@ public class RaycastRendererPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton mipButton;
     private javax.swing.JLabel renderingSpeedLabel;
     private javax.swing.JCheckBox shadingCheckbox;
+    private javax.swing.JCheckBox triLinearCheckbox;
     private javax.swing.JRadioButton slicerButton;
     private javax.swing.JRadioButton tf2dButton;
     // End of variables declaration//GEN-END:variables
