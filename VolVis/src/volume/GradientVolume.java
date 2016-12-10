@@ -52,7 +52,6 @@ public class GradientVolume {
  private void compute() {
 
         // this just initializes all gradients to the vector (0,0,0)
-        System.out.println(data.length);
         for (int i=0; i<data.length; i++) {
             data[i] = zero;
         }
@@ -61,10 +60,7 @@ public class GradientVolume {
         int dy=1;
         int dz=1;
         float voxelgrad_x,voxelgrad_y,voxelgrad_z;
-       // to take get the values between voxel range we need to calculate dimensions exceed to this range or not
-//       int rangeforX=Math.min(getDimX(),volume.getMaximum());
-//       int rangeforY=Math.min(getDimY(),volume.getMaximum());
-//       int rangeforZ=Math.min(getDimZ(),volume.getMaximum());
+
         int rangeforX=volume.getDimX();
         int rangeforY=volume.getDimY();
         int rangeforZ=volume.getDimZ();
@@ -84,8 +80,8 @@ public class GradientVolume {
                         voxelgrad_x= (volume.getVoxel(j+dx, k, l) - volume.getVoxel(j-dx, k, l))/2.0f;
                         voxelgrad_y= (volume.getVoxel(j, k+dy, l) - volume.getVoxel(j, k-dy, l))/2.0f;
                         voxelgrad_z= (volume.getVoxel(j, k, l+dz) - volume.getVoxel(j, k, l-dz))/2.0f;
-                        VoxelGradient voxel = new VoxelGradient(voxelgrad_x,voxelgrad_y,voxelgrad_z); 
-                        this.setGradient(j,k,l,voxel);
+                        VoxelGradient gradient = new VoxelGradient(voxelgrad_x,voxelgrad_y,voxelgrad_z); 
+                        this.setGradient(j,k,l,gradient);
                      }
                 }
             }
