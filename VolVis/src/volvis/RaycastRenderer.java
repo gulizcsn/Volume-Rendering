@@ -146,7 +146,7 @@ public class RaycastRenderer extends Renderer implements TFChangeListener {
 		int y1 = (int) Math.ceil(coord[1]);
 		int z1 = (int) Math.ceil(coord[2]);
               
-                if(x1>volume.getDimX()-1 || y1>volume.getDimX()-1 || z1>volume.getDimX()-1){
+                if(x1>volume.getDimX()-1 || y1>volume.getDimY()-1 || z1>volume.getDimZ()-1){
                 
                     return 0;
                 } 
@@ -205,7 +205,7 @@ public class RaycastRenderer extends Renderer implements TFChangeListener {
 		int y1 = (int) Math.ceil(coord[1]);
 		int z1 = (int) Math.ceil(coord[2]);
               
-                if(x1>volume.getDimX()-1 || y1>volume.getDimX()-1 || z1>volume.getDimX()-1){
+                if(x1>volume.getDimX()-1 || y1>volume.getDimY()-1 || z1>volume.getDimZ()-1){
                 
                     return 0;
                 } 
